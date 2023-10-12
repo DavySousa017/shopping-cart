@@ -1,6 +1,8 @@
 import React, { useContext } from 'react'
 import { BsFillLightningChargeFill, BsCartDash } from 'react-icons/bs'
 import appContext from '../context/appContext'
+import { toast, ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 
 const ProductCart = (props) => {
 
@@ -9,6 +11,20 @@ const ProductCart = (props) => {
     const removeItemCart = (id) => {
         const updatedCart = productsInCart.filter((product) => product.id !== id)
         setProductsInCart(updatedCart)
+        notifySuccess()
+    }
+
+    function notifySuccess() {
+        toast.success('Produto removido do carrinho!', {
+            position: "bottom-left",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+        })
     }
 
     return (

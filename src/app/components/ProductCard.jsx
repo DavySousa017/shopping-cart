@@ -9,7 +9,6 @@ const ProductCard = (props) => {
     const { productsInCart, setProductsInCart } = useContext(appContext)
 
     const addToCart = () => {
-
         const productExists = productsInCart.find(
             (p) => p.id === props.id
         )
@@ -19,12 +18,11 @@ const ProductCard = (props) => {
         } else {
             notifyFail()
         }
-
     }
 
     function notifySuccess() {
         toast.success('Produto adicionado ao carrinho!', {
-            position: "top-left",
+            position: "bottom-left",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -37,7 +35,7 @@ const ProductCard = (props) => {
 
     function notifyFail() {
         toast.warning('Seu carrinho já possui este produto!', {
-            position: "top-left",
+            position: "bottom-left",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
