@@ -1,13 +1,27 @@
 "use client";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
+import appContext from "../context/appContext";
+import getProducts from "../api/getProducts";
 
 const Input = () => {
 
   const [isActive, setIsActive] = useState(null)
+  const [searchValue, setSearchValue] = useState()
+  const { setLoading, setProducts } = useContext(appContext)
+
+  const Submit = async (e) => {
+    e.preventDefault();
+    setLoading(true)
+    const products = await getProducts(searchValue);
+    setProducts(products);
+    setLoading(false);
+  }
 
   return (
     <form
+      onSubmit={Submit}
+      onChange={({ target }) => setSearchValue(target.value)}
       className="h-10 flex flex-row-reverse bg-white/10 border shadow-md duration-300 rounded-2xl border-none"
     >
       <button onClick={() => setIsActive(!isActive)} type="button" className="w-10 h-10 flex items-center justify-center bg-black/20 shadow-md shadow-black/20 rounded-2xl">
