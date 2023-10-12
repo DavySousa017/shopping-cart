@@ -1,14 +1,16 @@
 'use client'
-import Link from 'next/link'
-import React from 'react'
+import React, { useContext } from 'react'
 import { PiShoppingCart } from 'react-icons/pi'
+import appContext from '../context/appContext'
 
 const IconCart = () => {
 
+  const { cartIsVisible, setCartIsVisible } = useContext(appContext)
+
   return (
-    <Link href='#' className={`flex items-center relative`}>
+    <button onClick={() => setCartIsVisible(!cartIsVisible)} type='button' className={`flex items-center relative`}>
       <PiShoppingCart className='text-3xl text-white' />
-    </Link>
+    </button>
   )
 }
 

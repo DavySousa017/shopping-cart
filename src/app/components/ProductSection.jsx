@@ -21,6 +21,7 @@ const ProductSection = () => {
     return (
         <div className='pt-20'>
             <div className='px-5 max-w-[1440px] mx-auto my-0'>
+                    <h3 className='text-4xl font-semibold text-white py-10'>Produtos</h3>
                 {loading && <Loading /> || products && !loading &&
                     <div className='flex flex-row flex-wrap justify-center gap-9'>
                         {products.map((item) => <ProductCard
